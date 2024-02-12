@@ -11,4 +11,10 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular17';
+  welcome='Bienvenido Angular17';
+  lists = [
+    'item1',
+    'item2',
+    'item3'
+  ];
 }

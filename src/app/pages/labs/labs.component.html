@@ -2,7 +2,9 @@
     <h1>Hola, este es mi proyecto en angular 17</h1>
     <h2>{{ welcome }}</h2>
     <ul>
-        <li *ngFor="let item of lists()">{{ item }}</li>
+        @for (item of lists(); track item) {
+        <li>{{ item }}</li>
+        }
     </ul>
     <hr />
     <h2>{{ 'hola'.repeat(4) }}</h2>
@@ -30,41 +32,60 @@
     <hr>
     <ul>
         <p>total: {{ lists().length }}</p>
-        <li *ngFor="let item of lists(); index as i">
+        @for (item of lists(); track item; let i = $index) {
+        <li>
             {{ i }} {{ item }}
         </li>
+        }
     </ul>
     <hr>
-    <div *ngIf="1 !== 1">
+    @if (1 !== 1) {
+    <div>
         My contend
     </div>
-    <div *ngIf="name() === 'david'">
-        soy david 
-    </div>
+    }
     @if (name() === 'david') {
-        <div>Soy David</div>
+    <div>
+        soy david
+    </div>
+    }
+    @if (name() === 'david') {
+    <div>Soy David</div>
     }
     <input type="number" [value]= "person().age" (change)="changeAge($event)">
-    <div *ngIf= "person().name === 'david' && person().age > 18; else mibloque">
+    @if (person().name === 'david' && person().age > 18) {
+    <div>
         soy david y soy mayor de 18
     </div>
-    <ng-template #mibloque>
-        soy david y soy menor de 18
-    </ng-template>
+    } @else {
+    soy david y soy menor de 18
+    }
     <h2>If else new</h2>
     @if (person().name === 'david' && person().age > 18) {
-        <strong>Soy David y soy mayor de 18</strong>
+    <strong>Soy David y soy mayor de 18</strong>
     } @else {
-        <i>soy david y soy menor de 18</i>
+    <i>soy david y soy menor de 18</i>
     }
     <hr>
     <input type="text" [value]= "person().name" (change)="changeName($event)">
-    <div [ngSwitch]= "person().name">
-        <p *ngSwitchCase="'david'">yo soy david </p>
-        <p *ngSwitchCase="'oscar'">yo soy oscar</p>
-        <p *ngSwitchCase="'angel'">yo soy angel</p>
-        <p *ngSwitchCase="'santiago'">yo soy santiago</p>
-        <p *ngSwitchDefault> yo no soy nadie</p>
+    <div>
+        @switch (person().name) {
+        @case ('david') {
+        <p>yo soy david </p>
+        }
+        @case ('oscar') {
+        <p>yo soy oscar</p>
+        }
+        @case ('angel') {
+        <p>yo soy angel</p>
+        }
+        @case ('santiago') {
+        <p>yo soy santiago</p>
+        }
+        @default {
+        <p> yo no soy nadie</p>
+        }
+        }
     </div>
     <hr>
     <input type="color" [formControl]="colorCtrl">
@@ -90,41 +111,55 @@
     <h2>New for</h2>
     <ul>
         <p>total: {{ lists().length }}</p>
-        <li *ngFor="let item of lists(); index as i">
+        @for (item of lists(); track item; let i = $index) {
+        <li>
             {{ i }} {{ item }}
         </li>
+        }
     </ul>
     <ul>
         @for (item of lists(); track item; let i = $index) {
-            <li>{{ i }} {{ item }}</li>
+        <li>{{ i }} {{ item }}</li>
         } @empty {
-            <li><strong>la lista esta en vacio</strong></li>
+        <li><strong>la lista esta en vacio</strong></li>
         }
     </ul>
     <hr>
     <h2>New switch</h2>
-    <div [ngSwitch]= "person().name">
-        <p *ngSwitchCase="'david'">yo soy david </p>
-        <p *ngSwitchCase="'oscar'">yo soy oscar</p>
-        <p *ngSwitchCase="'angel'">yo soy angel</p>
-        <p *ngSwitchCase="'santiago'">yo soy santiago</p>
-        <p *ngSwitchDefault> yo no soy nadie</p>
-    </div>
-    @switch (person().name) {
-        @case ('david') { 
-            <p>yo soy david</p> 
+    <div>
+        @switch (person().name) {
+        @case ('david') {
+        <p>yo soy david </p>
         }
-        @case ('oscar') { 
-            <p>yo soy oscar</p> 
+        @case ('oscar') {
+        <p>yo soy oscar</p>
         }
-        @case ('angel') { 
-            <p>yo soy angel</p> 
+        @case ('angel') {
+        <p>yo soy angel</p>
         }
-        @case ('santiago') { 
-            <p>yo soy santiago</p> 
+        @case ('santiago') {
+        <p>yo soy santiago</p>
         }
         @default {
-            <p>yo no soy nadie</p> 
+        <p> yo no soy nadie</p>
         }
+        }
+    </div>
+    @switch (person().name) {
+    @case ('david') {
+    <p>yo soy david</p>
+    }
+    @case ('oscar') {
+    <p>yo soy oscar</p>
+    }
+    @case ('angel') {
+    <p>yo soy angel</p>
+    }
+    @case ('santiago') {
+    <p>yo soy santiago</p>
+    }
+    @default {
+    <p>yo no soy nadie</p>
+    }
     }
 </div>

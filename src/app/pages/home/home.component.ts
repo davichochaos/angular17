@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, signal, computed, effect, inject, Injector } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -8,7 +8,7 @@ import { HtmlParser } from '@angular/compiler';
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule],
+	imports: [ReactiveFormsModule],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.css'
 })
